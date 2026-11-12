@@ -106,12 +106,12 @@ header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-w
 .fact span{display:block;margin-top:6px;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
 
 /* Projects */
-.projects{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .project{display:flex;flex-direction:column;gap:16px}
 .p-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .p-num{font-family:var(--f-serif);font-style:italic;font-size:30px;color:var(--violet);line-height:1}
 .p-detail{margin:0;display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(36,18,63,.14);padding-top:16px}
-.p-detail div{display:grid;grid-template-columns:92px 1fr;gap:14px}
+.p-detail div{display:grid;grid-template-columns:1fr;gap:2px}
 .p-detail dt{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);padding-top:4px}
 .p-detail dd{margin:0;font-size:14.5px;min-width:0}
 
@@ -234,7 +234,7 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
         <div class="facts">
           <div class="fact"><b>2+</b><span>years of experience</span></div>
           <div class="fact"><b>3</b><span>companies: CallHippo, ETS Labs, TTEC</span></div>
-          <div class="fact"><b>4</b><span>projects built with Claude</span></div>
+          <div class="fact"><b>3</b><span>projects built with Claude</span></div>
           <div class="fact"><b>86%</b><span>BBA in Finance, Jain University</span></div>
         </div>
       </div>
@@ -247,7 +247,7 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
     <div class="sec-top">
       <span class="pill">Projects</span>
       <h2 class="display"><em>Built</em>with Claude</h2>
-      <p class="note">Four projects where I used Claude to analyse, design or automate real work</p>
+      <p class="note">Three projects where I used Claude to analyse, design or automate real work</p>
     </div>
     <div class="projects">
       <article class="glass project">
@@ -281,17 +281,6 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
           <div><dt>Problem</dt><dd>HR wrote and posted every birthday, anniversary and welcome message by hand.</dd></div>
           <div><dt>What I did</dt><dd>Built a bot with Claude that reads team data from a Google Sheet, draws each card, posts at set times, logs every post and emails any failure.</dd></div>
           <div><dt>Result</dt><dd>The bot covers 120+ employees and is running in a test channel before it goes live.</dd></div>
-        </dl>
-      </article>
-      <article class="glass project">
-        <div class="p-head"><span class="p-num">04</span><span class="tag">Built with Claude</span></div>
-        <h3>This portfolio website</h3>
-        <p>The site you're reading, designed, written and built with Claude.</p>
-        <div class="chips"><span class="chip">Claude Code</span><span class="chip">HTML &amp; CSS</span><span class="chip">JavaScript</span></div>
-        <dl class="p-detail">
-          <div><dt>Problem</dt><dd>I needed one place to show my experience and projects beyond a resume.</dd></div>
-          <div><dt>What I did</dt><dd>Briefed Claude with my resume and references, reviewed sample designs, and refined the wording until it matched my role.</dd></div>
-          <div><dt>Result</dt><dd>A responsive personal website with an animated scene that works on desktop and phone.</dd></div>
         </dl>
       </article>
     </div>
@@ -375,11 +364,11 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
     <div class="sec-top">
       <span class="pill">Skills</span>
       <h2 class="display"><em>Core</em>skills</h2>
-      <p class="note">Process optimization, AI tools, data and metrics, quality and compliance</p>
+      <p class="note">LLMs and prompt engineering, process optimization, data and metrics, compliance</p>
     </div>
     <div class="skills">
       <div class="glass skill"><h3>Business process optimization</h3><div class="chips"><span class="chip">Workflow analysis</span><span class="chip">Process gap identification</span><span class="chip">Bottleneck analysis</span><span class="chip">Root-cause analysis</span><span class="chip">SOP documentation</span><span class="chip">Continuous improvement</span></div></div>
-      <div class="glass skill"><h3>AI &amp; automation tools</h3><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Grok / Grokbot</span><span class="chip">Structured prompting</span><span class="chip">AI-assisted analysis</span><span class="chip">Output validation</span></div></div>
+      <div class="glass skill"><h3>LLMs &amp; prompt engineering</h3><div class="chips"><span class="chip">Claude</span><span class="chip">Claude Code</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Grok / Grokbot</span><span class="chip">Prompt engineering</span><span class="chip">System prompts for AI voice agents (GPT-4.1)</span><span class="chip">Prompt versioning &amp; testing</span><span class="chip">LLM transcript analysis</span><span class="chip">AI-assisted research &amp; documentation</span><span class="chip">Workflow automation with AI</span><span class="chip">Output validation</span></div></div>
       <div class="glass skill"><h3>Cross-channel strategy</h3><div class="chips"><span class="chip">Speech analytics</span><span class="chip">Text analytics</span><span class="chip">AI voice agents</span><span class="chip">Conversation intelligence</span><span class="chip">Call transcript analysis</span></div></div>
       <div class="glass skill"><h3>Data &amp; performance metrics</h3><div class="chips"><span class="chip">Advanced Excel</span><span class="chip">Google Sheets</span><span class="chip">KPI reporting</span><span class="chip">QA scorecards</span><span class="chip">Trend analysis</span><span class="chip">Data validation</span></div></div>
       <div class="glass skill"><h3>Business operations</h3><div class="chips"><span class="chip">Process mapping</span><span class="chip">Operational efficiency</span><span class="chip">Stakeholder coordination</span><span class="chip">Workflow documentation</span><span class="chip">Cross-functional collaboration</span></div></div>
