@@ -7,7 +7,7 @@
 <meta name="description" content="Moqaddas Zubia, Associate in AI and Business Operations at CallHippo. Process optimization, root-cause analysis, conversation intelligence and LLM-based tools.">
 <meta property="og:title" content="Moqaddas Zubia | AI &amp; Business Operations"><meta property="og:description" content="Process optimization, root-cause analysis, conversation intelligence and LLM-based tools."><meta property="og:type" content="website"><meta property="og:url" content="https://zubia28.github.io/portfolio/"><meta property="og:image" content="https://zubia28.github.io/portfolio/photo.png"><meta name="twitter:card" content="summary"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Outfit:wght@300;400;500&display=swap">
 <style>
 /* Layout: a fixed, animated lavender landscape (sky, rocks, hill, lake) sits behind the whole page. A cluster of
    purple particles floats in it and re-forms into a new shape for each section. Headlines are tall uppercase serif
@@ -20,7 +20,7 @@
   --violet-soft:rgba(109,40,217,.08);
   --lav:#f3eefe;          /* intro ground */
   --glass:rgba(255,255,255,.86);
-  --f-serif:"Instrument Serif","Georgia",serif;
+  --f-serif:"Outfit","Inter Tight","Segoe UI",system-ui,sans-serif;   /* headline font (a light modern sans; the variable name is historical) */
   --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
   --f-sans:"Inter Tight","Segoe UI",system-ui,sans-serif;
   color-scheme:light;
@@ -65,8 +65,8 @@ header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-w
 .tools button[aria-pressed="false"]::before{background:transparent;box-shadow:inset 0 0 0 1.5px #fff}
 
 /* Type on the scene */
-.display{font-family:var(--f-serif);font-weight:400;text-transform:uppercase;font-size:clamp(44px,8.4vw,132px);line-height:.92;letter-spacing:-.01em;margin:0;text-shadow:0 4px 44px rgba(45,18,110,.5)}
-.display em{display:block;text-transform:none;font-style:italic;font-size:.84em;line-height:1.05}
+.display{font-family:var(--f-serif);font-weight:300;font-size:clamp(38px,6.4vw,92px);line-height:1.03;letter-spacing:-.02em;margin:0;text-shadow:0 4px 44px rgba(45,18,110,.5)}
+.display em{display:block;font-style:normal;color:#eadcff}
 .display .in{display:block;padding-left:clamp(0px,13vw,210px)}
 .pill{align-self:flex-start;font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:var(--violet);color:#fff;border-radius:999px;padding:5px 13px}
 .note{align-self:flex-start;font-family:var(--f-mono);font-size:12.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;line-height:1.55;max-width:46ch;background:rgba(42,18,98,.46);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:11px 15px;border-radius:12px}
@@ -76,25 +76,47 @@ header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-w
 .btn.v{background:var(--violet);color:#fff}
 
 /* Hero */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;gap:26px;padding-block:120px 60px}
-.hero .note{margin-bottom:4px}
+.hero{min-height:100svh;display:flex;align-items:center;padding-block:112px 52px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:52px;align-items:center;width:100%}
+.hero-copy{display:flex;flex-direction:column;align-items:flex-start;gap:22px;min-width:0}
+.lead{font-family:"Outfit","Inter Tight","Segoe UI",sans-serif;font-weight:300;font-size:clamp(40px,6.6vw,88px);line-height:1;letter-spacing:-.02em;margin:0;text-shadow:0 4px 34px rgba(45,18,110,.5)}
+.lead span{display:block}
+.lead .lead-role{font-size:.64em;line-height:1.08;letter-spacing:-.01em;margin-top:.16em;color:#f0e6ff}
+.mz{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.85);font-family:var(--f-mono);font-size:13px;font-weight:500;letter-spacing:.04em;text-decoration:none}
+.mz:hover{background:rgba(255,255,255,.16)}
+.intro .mz{width:66px;height:66px;font-size:19px;border-color:var(--violet);color:var(--violet)}
+.e-row em{font-weight:300}
+.mail{font-weight:300}
+.lede{max-width:56ch;font-size:17px;line-height:1.6;background:rgba(42,18,98,.46);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:14px 18px;border-radius:14px}
+.now-at{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 12px rgba(45,18,110,.7)}
+.now-at::before{content:"";width:8px;height:8px;border-radius:50%;background:#4ade80}
+/* Photo: a soft uneven shape on a violet backing */
+.hero-card{position:relative;margin:0 34px 0 0;justify-self:end;width:min(100%,350px);aspect-ratio:226/256}
+.hero-card::before{content:"";position:absolute;inset:-5%;background:linear-gradient(160deg,#c084fc,#6d28d9);border-radius:46% 54% 42% 58% / 55% 44% 56% 45%;transform:rotate(-8deg);opacity:.9}
+.hero-card img{position:relative;width:100%;height:100%;object-fit:cover;object-position:50% 28%;border-radius:58% 42% 55% 45% / 46% 56% 44% 54%;box-shadow:0 34px 70px -30px rgba(45,18,110,.8)}
+@media (max-width:980px){
+  .hero{padding-block:150px 44px}
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .hero-card{justify-self:start;width:min(86%,320px);margin:10px 0 0 14px}
+}
 
 /* Sections */
 .sec{padding-bottom:90px;scroll-margin-top:0}
 .sec-top{min-height:74svh;display:flex;flex-direction:column;justify-content:center;gap:22px;padding-top:110px;padding-bottom:40px}
-.sec-top .display{font-size:clamp(40px,7.2vw,112px);max-width:11ch}
-.sec-top.wide .display{max-width:14ch}
+.sec-top .display{font-size:clamp(36px,5.6vw,82px);max-width:15ch}
+.sec-top.wide .display{max-width:19ch}
 
 /* Frosted cards */
 .glass{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--ink);border-radius:24px;padding:30px;border:1px solid rgba(255,255,255,.75);box-shadow:0 30px 60px -34px rgba(45,18,110,.6);min-width:0}
-.glass h3{font-family:var(--f-serif);font-weight:400;font-size:30px;line-height:1.1;margin:0;letter-spacing:-.005em}
+.glass h3{font-family:var(--f-serif);font-weight:400;font-size:25px;line-height:1.15;margin:0;letter-spacing:-.015em}
 .glass p,.glass li,.glass dd{color:var(--ink-2)}
 .tag{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font-family:var(--f-mono);font-size:11.5px;line-height:1.5;color:#4c1d95;background:var(--violet-soft);border:1px solid rgba(109,40,217,.22);border-radius:999px;padding:3px 10px}
 
 /* About */
-.about{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:start}
+.about{display:grid;grid-template-columns:1fr;gap:34px;align-items:start}
+.glass.about{max-width:880px}   /* text only now, so the card is kept to a readable width */
 .about .pic{border-radius:18px;overflow:hidden;aspect-ratio:4/5}
 .about .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 28%}
 .about .copy{display:flex;flex-direction:column;gap:14px;font-size:17px;min-width:0}
@@ -115,10 +137,10 @@ header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-w
 .p-detail dt{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);padding-top:4px}
 .p-detail dd{margin:0;font-size:14.5px;min-width:0}
 
-/* Project figures and visuals */ .p-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px} .p-stat{background:var(--violet-soft);border-radius:14px;padding:12px 10px;min-width:0} .p-stat b{display:block;font-family:var(--f-serif);font-weight:400;font-size:30px;line-height:1;color:var(--violet);font-variant-numeric:tabular-nums} .p-stat span{display:block;margin-top:5px;font-size:12px;line-height:1.35;color:var(--ink-2)} .p-vis{display:flex;flex-direction:column;gap:10px} .checks{display:flex;flex-wrap:wrap;gap:5px;counter-reset:c;list-style:none;margin:0;padding:0} .checks li{counter-increment:c;font-size:12px;line-height:1.4;color:var(--ink);background:#fff;border:1px solid rgba(109,40,217,.2);border-radius:8px;padding:3px 8px} .checks li::before{content:counter(c);font-family:var(--f-mono);font-size:10px;color:var(--violet);margin-right:6px} .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;line-height:1.3;color:var(--ink)} .flow span{background:#fff;border:1px solid rgba(109,40,217,.2);border-radius:10px;padding:6px 10px} .flow span.on{background:var(--violet);border-color:var(--violet);color:#fff} .flow i{font-style:normal;color:var(--violet)} /* What I can help with */ .helps-block{margin-top:-56px;padding-bottom:24px} .helps-block .note{display:inline-block;margin-bottom:14px} .helps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .help{padding:24px;display:flex;flex-direction:column;gap:8px} .help h3{font-size:24px} .help p{font-size:14px;line-height:1.55} /* Contact form */ .cform{width:min(640px,100%);text-align:left;display:flex;flex-direction:column;gap:14px} .cform label{display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)} .cform input,.cform textarea{font:400 16px var(--f-sans);color:var(--ink);background:#fff;border:1px solid rgba(36,18,63,.2);border-radius:12px;padding:12px 14px;text-transform:none;letter-spacing:0;width:100%} .cform textarea{resize:vertical} .cform input:focus,.cform textarea:focus{outline:2px solid var(--violet);outline-offset:1px} .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px} .cform .btn{align-self:flex-start} .fnote{font-size:13px} @media (max-width:600px){.frow{grid-template-columns:1fr}} /* Approach */
+/* Project figures and visuals */ .p-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px} .p-stat{background:var(--violet-soft);border-radius:14px;padding:12px 10px;min-width:0} .p-stat b{display:block;font-family:var(--f-serif);font-weight:400;font-size:30px;line-height:1;color:var(--violet);font-variant-numeric:tabular-nums} .p-stat span{display:block;margin-top:5px;font-size:12px;line-height:1.35;color:var(--ink-2)} .p-vis{display:flex;flex-direction:column;gap:10px} .checks{display:flex;flex-wrap:wrap;gap:5px;counter-reset:c;list-style:none;margin:0;padding:0} .checks li{counter-increment:c;font-size:12px;line-height:1.4;color:var(--ink);background:#fff;border:1px solid rgba(109,40,217,.2);border-radius:8px;padding:3px 8px} .checks li::before{content:counter(c);font-family:var(--f-mono);font-size:10px;color:var(--violet);margin-right:6px} .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;line-height:1.3;color:var(--ink)} .flow span{background:#fff;border:1px solid rgba(109,40,217,.2);border-radius:10px;padding:6px 10px} .flow span.on{background:var(--violet);border-color:var(--violet);color:#fff} .flow i{font-style:normal;color:var(--violet)} /* What I can help with */ .helps-block{margin-top:-56px;padding-bottom:24px} .helps-block .note{display:inline-block;margin-bottom:14px} .helps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .help{padding:24px;display:flex;flex-direction:column;gap:8px} .help h3{font-size:21px} .help p{font-size:14px;line-height:1.55} /* Contact form */ .cform{width:min(640px,100%);text-align:left;display:flex;flex-direction:column;gap:14px} .cform label{display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)} .cform input,.cform textarea{font:400 16px var(--f-sans);color:var(--ink);background:#fff;border:1px solid rgba(36,18,63,.2);border-radius:12px;padding:12px 14px;text-transform:none;letter-spacing:0;width:100%} .cform textarea{resize:vertical} .cform input:focus,.cform textarea:focus{outline:2px solid var(--violet);outline-offset:1px} .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px} .cform .btn{align-self:flex-start} .fnote{font-size:13px} @media (max-width:600px){.frow{grid-template-columns:1fr}} /* Approach */
 .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .step{padding:24px;display:flex;flex-direction:column;gap:8px}
-.step h3{font-size:26px}
+.step h3{font-size:22px}
 .step p{font-size:14px;line-height:1.55}
 
 /* Experience */
@@ -136,7 +158,7 @@ header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-w
 /* Skills */
 .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .skill{display:flex;flex-direction:column;gap:14px;padding:26px}
-.skill h3{font-size:26px}
+.skill h3{font-size:22px}
 
 /* Education */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -187,14 +209,14 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
 <canvas id="scene" aria-hidden="true"></canvas>
 
 <div class="intro" id="intro">
-  <div class="mark">Moqaddas <i>Zubia</i></div>
+  <div class="mz" aria-hidden="true">MZ</div>
   <p>Business operations, AI &amp; process optimization</p>
   <button type="button" id="enter">Enter</button>
 </div>
 
 <header class="top" id="top-bar">
   <div class="wrap bar">
-    <a class="mark" href="#home">Moqaddas <i>Zubia</i></a>
+    <a class="mz" href="#home" aria-label="Moqaddas Zubia, back to top">MZ</a>
     <nav class="links" aria-label="Main">
       <a href="#about">About</a>
       
@@ -210,12 +232,21 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
 </header>
 
 <main>
-<section class="wrap hero" id="home" data-shape="sphere" data-x=".7" data-y=".38" data-s=".2" data-h=".66">
-  <p class="note">Associate, AI &amp; Business Operations at CallHippo</p>
-  <h1 class="display"><em>Business</em><span class="in">operations,<br>improved with AI</span></h1>
-  <div class="btns">
-    <a class="btn v" href="#experience">View my experience ↓</a>
-    <a class="btn" href="#contact">Contact me</a><a class="btn" href="resume.html">R&eacute;sum&eacute;</a>
+<section class="wrap hero" id="home" data-shape="sphere" data-x=".667" data-y=".25" data-s=".13" data-nx=".82" data-ny=".12" data-ns=".6" data-h=".66">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <h1 class="lead"><span>Moqaddas Zubia</span><span class="lead-role">Associate, AI &amp; Business Operations</span></h1>
+      <p class="lede">I analyse business processes, find operational gaps and bottlenecks, run root-cause analysis and turn what I find into recommendations teams can use.</p>
+      <div class="btns">
+        <a class="btn v" href="#experience">View my experience ↓</a>
+        <a class="btn" href="resume.html">R&eacute;sum&eacute;</a>
+        <a class="btn" href="#contact">Contact me</a>
+      </div>
+      <p class="now-at">Currently at CallHippo · Ahmedabad, India</p>
+    </div>
+    <figure class="hero-card">
+      <img src="photo.png" alt="Portrait of Moqaddas Zubia" width="512" height="512">
+    </figure>
   </div>
 </section>
 
@@ -227,16 +258,9 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
       <p class="note">2+ years across quality analytics, fraud prevention and AI-assisted workflow improvement</p>
     </div>
     <div class="glass about">
-      <div class="pic"><img src="photo.png" alt="Portrait of Moqaddas Zubia" width="512" height="512"></div>
       <div class="copy">
         <p>I'm a business operations and process optimization professional. I analyse business processes, identify operational gaps and bottlenecks, run root-cause analysis, and translate what I find into <strong>recommendations teams can use</strong>.</p>
         <p>I work hands-on with <strong>Claude, ChatGPT, Gemini and Grok</strong> for transcript analysis, structured research and documentation, and I validate AI output before it's used. I report in Advanced Excel and Google Sheets.</p>
-        <div class="facts">
-          <div class="fact"><b>2+</b><span>years of experience</span></div>
-          <div class="fact"><b>3</b><span>companies: CallHippo, ETS Labs, TTEC</span></div>
-          <div class="fact"><b>3</b><span>tools and analyses built with LLMs</span></div>
-          <div class="fact"><b>86%</b><span>BBA in Finance, Jain University</span></div>
-        </div>
       </div>
     </div>
   </div>
@@ -482,12 +506,12 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
 
   /* ---------- Section-driven camera ---------- */
   var secs=[].slice.call(document.querySelectorAll('[data-shape]'));
-  var cur={x:.7,y:.38,s:.2,h:.66}, tg={x:.7,y:.38,s:.2,h:.66};
+  var cur={x:.667,y:.25,s:.13,h:.66}, tg={x:.667,y:.25,s:.13,h:.66};
   function pickSection(){
     var mid=H*.5, best=secs[0];
     for(var i=0;i<secs.length;i++){var r=secs[i].getBoundingClientRect(); if(r.top<=mid && r.bottom>mid){best=secs[i];break} if(r.top<=mid) best=secs[i]}
     var d=best.dataset, narrow=W<820;
-    tg.x=narrow?.5:+d.x; tg.y=narrow?.27:+d.y; tg.s=(+d.s)*(narrow?.8:1); tg.h=+d.h;
+    tg.x=narrow?(+d.nx||.5):+d.x; tg.y=narrow?(+d.ny||.27):+d.y; tg.s=(+d.s)*(narrow?(+d.ns||.8):1); tg.h=+d.h;
     if(d.shape!==shapeName){shapeName=d.shape; target=shapes[shapeName]}
   }
   function frame(snap){
