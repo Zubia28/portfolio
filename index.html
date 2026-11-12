@@ -3,9 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Moqaddas Zubia</title>
-<meta name="description" content="Moqaddas Zubia, Associate in AI and Business Operations at CallHippo. Process optimization, root-cause analysis, conversation intelligence and LLM-based tools.">
-<meta property="og:title" content="Moqaddas Zubia | AI &amp; Business Operations"><meta property="og:description" content="Process optimization, root-cause analysis, conversation intelligence and LLM-based tools."><meta property="og:type" content="website"><meta property="og:url" content="https://zubia28.github.io/portfolio/"><meta property="og:image" content="https://zubia28.github.io/portfolio/photo.png"><meta name="twitter:card" content="summary"><link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Moqaddas Zubia | AI &amp; Business Operations at CallHippo</title>
+<meta name="description" content="Portfolio of Moqaddas Zubia, Associate in AI and Business Operations at CallHippo: sales-call analysis, AI voice-agent scripts, process optimization and workflow automation.">
+<link rel="canonical" href="https://zubia28.github.io/portfolio/">
+<link rel="icon" href="favicon.png" type="image/png" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="Moqaddas Zubia | AI &amp; Business Operations at CallHippo">
+<meta property="og:description" content="Sales-call analysis, AI voice-agent scripts, process optimization and workflow automation.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moqaddas Zubia">
+<meta property="og:url" content="https://zubia28.github.io/portfolio/">
+<meta property="og:image" content="https://zubia28.github.io/portfolio/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Moqaddas Zubia, Associate in AI and Business Operations at CallHippo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Moqaddas Zubia | AI &amp; Business Operations at CallHippo">
+<meta name="twitter:description" content="Sales-call analysis, AI voice-agent scripts, process optimization and workflow automation.">
+<meta name="twitter:image" content="https://zubia28.github.io/portfolio/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
 <style>
@@ -41,14 +58,10 @@ p{margin:0}
 header,main{position:relative;z-index:1}
 .wrap{max-width:1280px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
 
-/* Intro */
-.intro{position:fixed;inset:0;z-index:200;background:var(--lav);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:24px;transition:opacity .8s,visibility .8s}
-.intro.gone{opacity:0;visibility:hidden;pointer-events:none}
-.intro .mark{font-family:var(--f-serif);font-size:34px;letter-spacing:.01em}
-.intro .mark i{font-style:normal;color:var(--violet)}
-.intro p{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;max-width:34ch}
-.intro button{margin-top:26px;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:#fff;color:var(--ink);border:1px solid rgba(109,40,217,.25);border-radius:999px;padding:14px 30px;cursor:pointer;box-shadow:0 14px 30px -18px rgba(109,40,217,.6)}
-.intro button:hover{background:var(--violet);color:#fff}
+/* Placeholders for results still to be filled in: hidden from visitors, shown when the address ends in ?draft */
+.todo{display:none}
+.draft .todo{display:inline;font-family:var(--f-mono);font-size:12px;line-height:1.5;background:#fff3bf;color:#7a4b00;border-radius:6px;padding:2px 7px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.draft p.todo{display:block;align-self:flex-start}
 
 /* Nav */
 header.top{position:fixed;top:0;left:0;right:0;z-index:60;padding-top:calc(env(safe-area-inset-top,0px) + 18px);padding-bottom:14px;transition:background .3s}
@@ -63,6 +76,24 @@ header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-w
 .tools button{background:none;border:0;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
 .tools button::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff}
 .tools button[aria-pressed="false"]::before{background:transparent;box-shadow:inset 0 0 0 1.5px #fff}
+.right{display:flex;align-items:center;gap:18px}
+
+/* Mobile menu */
+.burger{display:none;flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.6);background:rgba(42,18,98,.4);color:#fff;cursor:pointer;align-items:center;justify-content:center;padding:0}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:2px;border-radius:2px;background:#fff}
+.burger span{position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}
+.burger span::after{top:6px}
+.drawer{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;overflow-y:auto;background:rgba(58,32,140,.95);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:calc(env(safe-area-inset-top,0px) + 18px) max(22px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 28px) max(22px,env(safe-area-inset-left,0px))}
+.drawer-bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.drawer-close{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(42,18,98,.4);border:1px solid rgba(255,255,255,.6);border-radius:999px;min-height:44px;padding:0 18px;cursor:pointer}
+.drawer nav{display:flex;flex-direction:column;margin-top:22px}
+.drawer nav a{font-family:var(--f-serif);font-size:34px;line-height:1.1;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.22)}
+.drawer nav a:hover{color:#e9d5ff}
+.drawer-foot{margin-top:auto;padding-top:26px;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.drawer-foot a{text-decoration:none;display:inline-block;padding:12px 0}
+main section:focus{outline:none}
 
 /* Type on the scene */
 .display{font-family:var(--f-serif);font-weight:400;text-transform:uppercase;font-size:clamp(44px,8.4vw,132px);line-height:.92;letter-spacing:-.01em;margin:0;text-shadow:0 4px 44px rgba(45,18,110,.5)}
@@ -78,12 +109,15 @@ header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-w
 /* Hero */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;gap:26px;padding-block:120px 60px}
 .hero .note{margin-bottom:4px}
+.hero .display{font-size:clamp(38px,6.6vw,104px)}
+.lede{align-self:flex-start;max-width:60ch;font-size:17px;line-height:1.55;background:rgba(42,18,98,.46);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:13px 17px;border-radius:14px}
 
-/* Sections */
-.sec{padding-bottom:90px;scroll-margin-top:0}
-.sec-top{min-height:74svh;display:flex;flex-direction:column;justify-content:center;gap:22px;padding-top:110px;padding-bottom:40px}
-.sec-top .display{font-size:clamp(40px,7.2vw,112px);max-width:11ch}
-.sec-top.wide .display{max-width:14ch}
+/* Sections: short headings so the content is on screen straight away; scroll-margin keeps the fixed header off anchored content */
+.sec{padding-bottom:84px;scroll-margin-top:84px}
+#education,.helps-block{scroll-margin-top:92px}
+.sec-top{display:flex;flex-direction:column;gap:14px;padding-top:26px;padding-bottom:26px}
+.sec-top .display{font-size:clamp(34px,4.8vw,70px);max-width:18ch}
+.sec-top.wide .display{max-width:22ch}
 
 /* Frosted cards */
 .glass{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--ink);border-radius:24px;padding:30px;border:1px solid rgba(255,255,255,.75);box-shadow:0 30px 60px -34px rgba(45,18,110,.6);min-width:0}
@@ -96,6 +130,7 @@ header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-w
 /* About */
 .about{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:start}
 .about .pic{border-radius:18px;overflow:hidden;aspect-ratio:4/5}
+.about .pic picture{display:block;width:100%;height:100%}
 .about .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 28%}
 .about .copy{display:flex;flex-direction:column;gap:14px;font-size:17px;min-width:0}
 .about .copy strong{color:var(--ink);font-weight:600}
@@ -105,17 +140,13 @@ header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-w
 .fact b{display:block;font-family:var(--f-serif);font-weight:400;font-size:44px;line-height:1;color:var(--violet);font-variant-numeric:tabular-nums}
 .fact span{display:block;margin-top:6px;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
 
-/* Projects */
-.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.project{display:flex;flex-direction:column;gap:16px}
-.p-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.p-num{font-family:var(--f-serif);font-style:italic;font-size:30px;color:var(--violet);line-height:1}
-.p-detail{margin:0;display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(36,18,63,.14);padding-top:16px}
-.p-detail div{display:grid;grid-template-columns:1fr;gap:2px}
-.p-detail dt{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);padding-top:4px}
-.p-detail dd{margin:0;font-size:14.5px;min-width:0}
+/* Work */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.work{display:flex;flex-direction:column;gap:10px;padding:26px}
+.work h3{font-size:26px}
+.work p{font-size:15px;line-height:1.55}
 
-/* Project figures and visuals */ .p-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px} .p-stat{background:var(--violet-soft);border-radius:14px;padding:12px 10px;min-width:0} .p-stat b{display:block;font-family:var(--f-serif);font-weight:400;font-size:30px;line-height:1;color:var(--violet);font-variant-numeric:tabular-nums} .p-stat span{display:block;margin-top:5px;font-size:12px;line-height:1.35;color:var(--ink-2)} .p-vis{display:flex;flex-direction:column;gap:10px} .checks{display:flex;flex-wrap:wrap;gap:5px;counter-reset:c;list-style:none;margin:0;padding:0} .checks li{counter-increment:c;font-size:12px;line-height:1.4;color:var(--ink);background:#fff;border:1px solid rgba(109,40,217,.2);border-radius:8px;padding:3px 8px} .checks li::before{content:counter(c);font-family:var(--f-mono);font-size:10px;color:var(--violet);margin-right:6px} .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;line-height:1.3;color:var(--ink)} .flow span{background:#fff;border:1px solid rgba(109,40,217,.2);border-radius:10px;padding:6px 10px} .flow span.on{background:var(--violet);border-color:var(--violet);color:#fff} .flow i{font-style:normal;color:var(--violet)} /* What I can help with */ .helps-block{margin-top:-56px;padding-bottom:24px} .helps-block .note{display:inline-block;margin-bottom:14px} .helps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .help{padding:24px;display:flex;flex-direction:column;gap:8px} .help h3{font-size:24px} .help p{font-size:14px;line-height:1.55} /* Contact form */ .cform{width:min(640px,100%);text-align:left;display:flex;flex-direction:column;gap:14px} .cform label{display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)} .cform input,.cform textarea{font:400 16px var(--f-sans);color:var(--ink);background:#fff;border:1px solid rgba(36,18,63,.2);border-radius:12px;padding:12px 14px;text-transform:none;letter-spacing:0;width:100%} .cform textarea{resize:vertical} .cform input:focus,.cform textarea:focus{outline:2px solid var(--violet);outline-offset:1px} .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px} .cform .btn{align-self:flex-start} .fnote{font-size:13px} @media (max-width:600px){.frow{grid-template-columns:1fr}} /* Approach */
+/* What I can help with */ .helps-block{margin-top:-50px;padding-bottom:84px} .helps-block .note{display:inline-block;margin-bottom:14px} .helps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .help{padding:24px;display:flex;flex-direction:column;gap:8px} .help h3{font-size:24px} .help p{font-size:14px;line-height:1.55} /* Contact form */ .cform{width:min(640px,100%);text-align:left;display:flex;flex-direction:column;gap:14px} .cform label{display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)} .cform input,.cform textarea{font:400 16px var(--f-sans);color:var(--ink);background:#fff;border:1px solid rgba(36,18,63,.2);border-radius:12px;padding:12px 14px;text-transform:none;letter-spacing:0;width:100%} .cform textarea{resize:vertical} .cform input:focus,.cform textarea:focus{outline:2px solid var(--violet);outline-offset:1px} .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px} .cform .btn{align-self:flex-start} .fnote{font-size:13px} @media (max-width:600px){.frow{grid-template-columns:1fr}} /* Approach */
 .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .step{padding:24px;display:flex;flex-direction:column;gap:8px}
 .step h3{font-size:26px}
@@ -161,6 +192,8 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
 /* Responsive */
 @media (max-width:980px){
   .links{display:none}
+  .burger{display:inline-flex}
+  .works{grid-template-columns:1fr}
   .about{grid-template-columns:1fr}
   .about .pic{max-width:260px}
   .facts{grid-template-columns:1fr 1fr}
@@ -168,54 +201,75 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
   .fact + .fact{padding-left:0;border-left:0}
   .fact:nth-child(even){padding-left:16px;border-left:1px solid rgba(36,18,63,.14)}
   .fact:nth-child(n+3){border-top:1px solid rgba(36,18,63,.14)}
-  .projects,.two{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
   .steps,.helps{grid-template-columns:1fr 1fr}
   .role{grid-template-columns:1fr}
   .skills{grid-template-columns:1fr 1fr}
-  .sec-top{min-height:66svh;justify-content:flex-end}
 }
 @media (max-width:600px){
   .glass{padding:22px;border-radius:20px}
   .steps,.skills,.helps{grid-template-columns:1fr}
-  .p-detail div{grid-template-columns:1fr;gap:2px}
   .tools a{display:none}
+  .right{gap:12px}
+  .mark{font-size:23px}
   .display .in{padding-left:0}
+  .hero{gap:20px;padding-block:104px 44px}
+  .lede{font-size:16px}
+  .sec{padding-bottom:64px}
+  .helps-block{padding-bottom:64px}
 }
 </style>
 </head>
 <body>
 <canvas id="scene" aria-hidden="true"></canvas>
 
-<div class="intro" id="intro">
-  <div class="mark">Moqaddas <i>Zubia</i></div>
-  <p>Business operations, AI &amp; process optimization</p>
-  <button type="button" id="enter">Enter</button>
-</div>
-
 <header class="top" id="top-bar">
   <div class="wrap bar">
     <a class="mark" href="#home">Moqaddas <i>Zubia</i></a>
     <nav class="links" aria-label="Main">
       <a href="#about">About</a>
-      
+      <a href="#work">Work</a>
       <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a><a href="resume.html">R&eacute;sum&eacute;</a>
+      <a href="#skills">Skills</a>
+      <a href="resume.html">R&eacute;sum&eacute;</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="tools">
-      <button type="button" id="motion" aria-pressed="true">Motion on</button>
-      <a href="https://www.linkedin.com/in/moqaddas-zubia" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <div class="right">
+      <div class="tools">
+        <button type="button" id="motion" aria-pressed="true">Motion on</button>
+        <a href="https://www.linkedin.com/in/moqaddas-zubia" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+      <button type="button" class="burger" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span aria-hidden="true"></span></button>
     </div>
   </div>
 </header>
 
+<div class="drawer" id="menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+  <div class="drawer-bar">
+    <span class="mark">Moqaddas <i>Zubia</i></span>
+    <button type="button" class="drawer-close" id="menu-close">Close</button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="resume.html">R&eacute;sum&eacute;</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="drawer-foot"><a href="https://www.linkedin.com/in/moqaddas-zubia" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+</div>
+
 <main>
-<section class="wrap hero" id="home" data-shape="sphere" data-x=".7" data-y=".38" data-s=".2" data-h=".66">
+<section class="wrap hero" id="home" data-shape="sphere" data-x=".82" data-y=".33" data-ny=".18" data-s=".19" data-h=".66">
   <p class="note">Associate, AI &amp; Business Operations at CallHippo</p>
-  <h1 class="display"><em>Business</em><span class="in">operations,<br>improved with AI</span></h1>
+  <h1 class="display"><em>439 sales calls</em><span class="in">analysed to improve<br>AI agent scripts</span></h1>
+  <p class="lede">At CallHippo I compare AI-led and human-led demo-booking calls, find why demos are missed, and turn the findings into script and workflow changes. <span class="todo">[ADD RESULT: the headline outcome, e.g. change in demo show-up rate]</span></p>
   <div class="btns">
-    <a class="btn v" href="#experience">View my experience ↓</a>
-    <a class="btn" href="#contact">Contact me</a><a class="btn" href="resume.html">R&eacute;sum&eacute;</a>
+    <a class="btn v" href="#work">See my work ↓</a>
+    <a class="btn" href="#experience">View my experience</a>
+    <a class="btn" href="#contact">Contact me</a>
+    <a class="btn" href="resume.html">R&eacute;sum&eacute;</a>
   </div>
 </section>
 
@@ -227,7 +281,7 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
       <p class="note">2+ years across quality analytics, fraud prevention and AI-assisted workflow improvement</p>
     </div>
     <div class="glass about">
-      <div class="pic"><img src="photo.png" alt="Portrait of Moqaddas Zubia" width="512" height="512"></div>
+      <div class="pic"><picture><source srcset="photo.webp" type="image/webp" width="480" height="480"><img src="photo.png" alt="Portrait of Moqaddas Zubia" width="480" height="480" loading="lazy" decoding="async"></picture></div>
       <div class="copy">
         <p>I'm a business operations and process optimization professional. I analyse business processes, identify operational gaps and bottlenecks, run root-cause analysis, and translate what I find into <strong>recommendations teams can use</strong>.</p>
         <p>I work hands-on with <strong>Claude, ChatGPT, Gemini and Grok</strong> for transcript analysis, structured research and documentation, and I validate AI output before it's used. I report in Advanced Excel and Google Sheets.</p>
@@ -242,7 +296,39 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
   </div>
 </section>
 
-<div class="wrap helps-block"><p class="note">What I can help with</p><div class="helps"><div class="glass help"><h3>Conversation analysis</h3><p>Reviewing AI-led and human-led calls to find quality gaps and their root causes.</p></div><div class="glass help"><h3>AI agent scripts</h3><p>Refining voice-agent prompts and scripts so conversations hold attention and convert.</p></div><div class="glass help"><h3>Process optimization</h3><p>Mapping workflows, finding bottlenecks and documenting the fix in SOPs.</p></div><div class="glass help"><h3>Workflow automation</h3><p>Using LLMs to take over repetitive work, with every output checked.</p></div></div></div><section class="sec" id="approach" data-shape="gear" data-x=".76" data-y=".4" data-s=".24" data-h=".78">
+<div class="wrap helps-block"><p class="note">What I can help with</p><div class="helps"><div class="glass help"><h3>Conversation analysis</h3><p>Reviewing AI-led and human-led calls to find quality gaps and their root causes.</p></div><div class="glass help"><h3>AI agent scripts</h3><p>Refining voice-agent prompts and scripts so conversations hold attention and convert.</p></div><div class="glass help"><h3>Process optimization</h3><p>Mapping workflows, finding bottlenecks and documenting the fix in SOPs.</p></div><div class="glass help"><h3>Workflow automation</h3><p>Using LLMs to take over repetitive work, with every output checked.</p></div></div></div>
+
+<section class="sec" id="work" data-shape="bubble" data-x=".76" data-y=".4" data-s=".24" data-h=".8">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="pill">Work</span>
+      <h2 class="display"><em>Selected</em>work</h2>
+      <p class="note">Three pieces built with LLMs since joining CallHippo in Sep 2026</p>
+    </div>
+    <div class="works">
+      <article class="glass work">
+        <span class="tag">Analysis</span>
+        <h3>AI vs human sales-call analysis</h3>
+        <p>Compared 439 demo-booking calls (208 AI-led, 231 human-led) against a 15-point framework to see where engagement, booking confirmation and demo attendance differ.</p>
+        <p class="todo">[ADD RESULT: the main finding, or what changed because of it]</p>
+      </article>
+      <article class="glass work">
+        <span class="tag">AI voice agent</span>
+        <h3>Voice-agent script redesign</h3>
+        <p>Rewrote the AI voice agent's script after comparing it with effective human-agent calls, covering engagement, objection handling, confirmation and customer commitment.</p>
+        <p class="todo">[ADD RESULT: e.g. change in bookings or demo attendance after the new script]</p>
+      </article>
+      <article class="glass work">
+        <span class="tag">Automation</span>
+        <h3>Slack celebrations bot</h3>
+        <p>Built a Google Apps Script bot that posts birthday, work-anniversary and welcome cards to the team Slack channel on schedule, in place of posts HR made by hand.</p>
+        <p class="todo">[ADD RESULT: e.g. live since which date, or HR time saved each month]</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="approach" data-shape="gear" data-x=".76" data-y=".4" data-s=".24" data-h=".78">
   <div class="wrap">
     <div class="sec-top wide">
       <span class="pill">Approach</span>
@@ -275,12 +361,10 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
           <span class="now">Current role</span>
         </div>
         <ul>
-          <li>Analyse AI-led and human-led demo-booking conversations to identify differences in customer engagement, booking confirmation and demo attendance.</li>
-          <li>Run root-cause analysis of demo no-shows by reviewing call transcripts, agent communication patterns, confirmation practices and customer intent.</li>
-          <li>Use Claude and other AI tools to analyse call transcripts, identify recurring patterns and turn findings into structured business insights.</li>
-          <li>Compare AI-agent scripts with effective human-agent conversations to find gaps in engagement, objection handling, confirmation and customer commitment.</li>
-          <li>Develop recommendations for AI-agent script refinements to improve conversation quality, booking effectiveness and demo attendance.</li>
-          <li>Identify gaps in calling workflows and explore ways to improve agent productivity through conversation intelligence, process changes and automation.</li>
+          <li>Analysed 439 AI-led and human-led demo-booking calls to pinpoint where customer engagement, booking confirmation and demo attendance differ. <span class="todo">[ADD RESULT: the key finding]</span></li>
+          <li>Traced demo no-shows to their root causes by reviewing call transcripts, agent communication patterns, confirmation practices and customer intent. <span class="todo">[ADD RESULT: top causes found, or change in no-show rate]</span></li>
+          <li>Redesigned the AI voice-agent script after comparing it with effective human-agent calls, to close gaps in engagement, objection handling, confirmation and customer commitment. <span class="todo">[ADD RESULT: change in bookings or attendance]</span></li>
+          <li>Identified gaps in calling workflows and proposed process changes and automation to raise agent productivity. <span class="todo">[ADD RESULT: changes adopted, or time saved]</span></li>
         </ul>
       </article>
       <article class="glass role">
@@ -290,11 +374,10 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
           <div class="org">ETS Labs</div>
         </div>
         <ul>
-          <li>Analysed customer service, technical support and sales interactions to identify quality gaps, process deviations and performance trends.</li>
-          <li>Ran root-cause analysis on recurring errors and performance gaps, translating findings into structured feedback and actionable recommendations.</li>
-          <li>Built Speech Analytics searches and automated reports to surface customer trends, interaction patterns and compliance risks.</li>
-          <li>Tracked performance through QA reports, scorecards and reporting in Advanced Excel and Google Sheets.</li>
-          <li>Maintained SOPs and process documentation, and took part in internal and client calibration sessions to align quality scoring.</li>
+          <li>Surfaced customer trends, interaction patterns and compliance risks by building Speech Analytics searches and automated reports. <span class="todo">[ADD RESULT: number of reports built, or hours saved]</span></li>
+          <li>Turned root-cause analysis of recurring errors and performance gaps into structured feedback and actionable recommendations. <span class="todo">[ADD RESULT: change in quality scores]</span></li>
+          <li>Identified quality gaps, process deviations and performance trends across customer service, technical support and sales interactions, tracked in QA scorecards in Advanced Excel and Google Sheets.</li>
+          <li>Kept quality scoring aligned by maintaining SOPs and taking part in internal and client calibration sessions.</li>
         </ul>
       </article>
       <article class="glass role">
@@ -304,10 +387,10 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
           <div class="org">TTEC</div>
         </div>
         <ul>
-          <li>Monitored customer transactions and account activity to identify suspicious patterns, potential fraud and financial risk.</li>
-          <li>Investigated fraud alerts, documented findings and followed established procedures.</li>
-          <li>Acted as Subject Matter Expert on fraud workflows, giving process guidance and real-time support on complex and escalated cases.</li>
-          <li>Reinforced process updates and SOP requirements through peer coaching, knowledge sharing and feedback.</li>
+          <li>Flagged suspicious patterns, potential fraud and financial risk by monitoring customer transactions and account activity. <span class="todo">[ADD RESULT: cases reviewed, or fraud prevented]</span></li>
+          <li>Served as Subject Matter Expert on fraud workflows, giving process guidance and real-time support on complex and escalated cases.</li>
+          <li>Investigated fraud alerts and documented findings in line with established procedures.</li>
+          <li>Reinforced process updates and SOP requirements through peer coaching, knowledge sharing and feedback. <span class="todo">[ADD RESULT: number of people coached]</span></li>
         </ul>
       </article>
     </div>
@@ -482,12 +565,13 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
 
   /* ---------- Section-driven camera ---------- */
   var secs=[].slice.call(document.querySelectorAll('[data-shape]'));
-  var cur={x:.7,y:.38,s:.2,h:.66}, tg={x:.7,y:.38,s:.2,h:.66};
+  var cur={x:.82,y:.33,s:.19,h:.66}, tg={x:.82,y:.33,s:.19,h:.66};
   function pickSection(){
     var mid=H*.5, best=secs[0];
     for(var i=0;i<secs.length;i++){var r=secs[i].getBoundingClientRect(); if(r.top<=mid && r.bottom>mid){best=secs[i];break} if(r.top<=mid) best=secs[i]}
-    var d=best.dataset, narrow=W<820;
-    tg.x=narrow?.5:+d.x; tg.y=narrow?.27:+d.y; tg.s=(+d.s)*(narrow?.8:1); tg.h=+d.h;
+    /* On narrow screens the cluster sits centred in the hero and contact screens, and as a small figure beside the short section headings */
+    var d=best.dataset, narrow=W<820, big=best.id==='home'||best.id==='contact';
+    tg.x=narrow?(big?.5:.82):+d.x; tg.y=narrow?(+d.ny||(big?.27:.14)):+d.y; tg.s=(+d.s)*(narrow?(big?.8:.5):1); tg.h=+d.h;
     if(d.shape!==shapeName){shapeName=d.shape; target=shapes[shapeName]}
   }
   function frame(snap){
@@ -515,10 +599,39 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
   if(!motion) setMotion(false);
   mBtn.addEventListener('click',function(){setMotion(!motion)});
 
-  var intro=document.getElementById('intro');
-  function enter(){intro.classList.add('gone'); setTimeout(function(){intro.hidden=true},900)}
-  document.getElementById('enter').addEventListener('click',enter);
-  setTimeout(enter,2600);
+  /* Result placeholders are shown only when the address ends in ?draft */
+  if(/[?&]draft\b/.test(location.search)) document.documentElement.classList.add('draft');
+
+  /* Mobile menu: a dialog with focus kept inside, Escape to close, focus returned to the button */
+  var menuBtn=document.getElementById('menu-btn'), menu=document.getElementById('menu'), menuClose=document.getElementById('menu-close'), mainEl=document.querySelector('main');
+  function setMenu(open,refocus){
+    menu.hidden=!open;
+    menuBtn.setAttribute('aria-expanded',String(open));
+    menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+    document.documentElement.style.overflow=open?'hidden':'';
+    mainEl.inert=open; head.inert=open;
+    if(open) menuClose.focus(); else if(refocus) menuBtn.focus();
+  }
+  menuBtn.addEventListener('click',function(){setMenu(true)});
+  menuClose.addEventListener('click',function(){setMenu(false,true)});
+  menu.addEventListener('click',function(e){
+    var a=e.target.closest('a'); if(!a) return;
+    var hash=a.getAttribute('href'), dest=hash.charAt(0)==='#' ? document.querySelector(hash) : null;
+    setMenu(false,false);
+    if(dest){
+      e.preventDefault();
+      dest.setAttribute('tabindex','-1'); dest.focus({preventScroll:true});
+      dest.scrollIntoView(); history.pushState(null,'',hash);
+    }
+  });
+  menu.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){setMenu(false,true); return}
+    if(e.key!=='Tab') return;
+    var f=menu.querySelectorAll('a[href],button'), first=f[0], last=f[f.length-1];
+    if(e.shiftKey && document.activeElement===first){e.preventDefault(); last.focus()}
+    else if(!e.shiftKey && document.activeElement===last){e.preventDefault(); first.focus()}
+  });
+  matchMedia('(min-width:981px)').addEventListener('change',function(e){if(e.matches && !menu.hidden) setMenu(false,false)});
 
   var btn=document.getElementById('copy-email');
   btn.addEventListener('click',function(){
