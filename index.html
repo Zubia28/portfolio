@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Moqaddas Zubia</title>
 <meta name="description" content="Moqaddas Zubia, Associate in AI and Business Operations at CallHippo. Process optimization, root-cause analysis, conversation intelligence and projects built with Claude.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta property="og:title" content="Moqaddas Zubia | AI &amp; Business Operations"><meta property="og:description" content="Process optimization, root-cause analysis, conversation intelligence and LLM-based tools."><meta property="og:type" content="website"><meta property="og:url" content="https://zubia28.github.io/portfolio/"><meta property="og:image" content="https://zubia28.github.io/portfolio/photo.png"><meta name="twitter:card" content="summary"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
 <style>
@@ -115,7 +115,7 @@ header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-w
 .p-detail dt{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);padding-top:4px}
 .p-detail dd{margin:0;font-size:14.5px;min-width:0}
 
-/* Approach */
+/* Project figures and visuals */ .p-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px} .p-stat{background:var(--violet-soft);border-radius:14px;padding:12px 10px;min-width:0} .p-stat b{display:block;font-family:var(--f-serif);font-weight:400;font-size:30px;line-height:1;color:var(--violet);font-variant-numeric:tabular-nums} .p-stat span{display:block;margin-top:5px;font-size:12px;line-height:1.35;color:var(--ink-2)} .p-vis{display:flex;flex-direction:column;gap:10px} .checks{display:flex;flex-wrap:wrap;gap:5px;counter-reset:c;list-style:none;margin:0;padding:0} .checks li{counter-increment:c;font-size:12px;line-height:1.4;color:var(--ink);background:#fff;border:1px solid rgba(109,40,217,.2);border-radius:8px;padding:3px 8px} .checks li::before{content:counter(c);font-family:var(--f-mono);font-size:10px;color:var(--violet);margin-right:6px} .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;line-height:1.3;color:var(--ink)} .flow span{background:#fff;border:1px solid rgba(109,40,217,.2);border-radius:10px;padding:6px 10px} .flow span.on{background:var(--violet);border-color:var(--violet);color:#fff} .flow i{font-style:normal;color:var(--violet)} /* What I can help with */ .helps-block{margin-top:-56px;padding-bottom:24px} .helps-block .note{display:inline-block;margin-bottom:14px} .helps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .help{padding:24px;display:flex;flex-direction:column;gap:8px} .help h3{font-size:24px} .help p{font-size:14px;line-height:1.55} /* Approach */
 .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .step{padding:24px;display:flex;flex-direction:column;gap:8px}
 .step h3{font-size:26px}
@@ -169,14 +169,14 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
   .fact:nth-child(even){padding-left:16px;border-left:1px solid rgba(36,18,63,.14)}
   .fact:nth-child(n+3){border-top:1px solid rgba(36,18,63,.14)}
   .projects,.two{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr 1fr}
+  .steps,.helps{grid-template-columns:1fr 1fr}
   .role{grid-template-columns:1fr}
   .skills{grid-template-columns:1fr 1fr}
   .sec-top{min-height:66svh;justify-content:flex-end}
 }
 @media (max-width:600px){
   .glass{padding:22px;border-radius:20px}
-  .steps,.skills{grid-template-columns:1fr}
+  .steps,.skills,.helps{grid-template-columns:1fr}
   .p-detail div{grid-template-columns:1fr;gap:2px}
   .tools a{display:none}
   .display .in{padding-left:0}
@@ -242,7 +242,7 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
   </div>
 </section>
 
-<section class="sec" id="projects" data-shape="bubble" data-x=".76" data-y=".4" data-s=".25" data-h=".86">
+<div class="wrap helps-block"><p class="note">What I can help with</p><div class="helps"><div class="glass help"><h3>Conversation analysis</h3><p>Reviewing AI-led and human-led calls to find quality gaps and their root causes.</p></div><div class="glass help"><h3>AI agent scripts</h3><p>Refining voice-agent prompts and scripts so conversations hold attention and convert.</p></div><div class="glass help"><h3>Process optimization</h3><p>Mapping workflows, finding bottlenecks and documenting the fix in SOPs.</p></div><div class="glass help"><h3>Workflow automation</h3><p>Using LLMs to take over repetitive work, with every output checked.</p></div></div></div><section class="sec" id="projects" data-shape="bubble" data-x=".76" data-y=".4" data-s=".25" data-h=".86">
   <div class="wrap">
     <div class="sec-top">
       <span class="pill">Projects</span>
@@ -254,7 +254,7 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
         <div class="p-head"><span class="p-num">01</span><span class="tag">Built with Claude</span></div>
         <h3>AI vs human demo-booking call analysis</h3>
         <p>Finding out why demos booked by an AI voice agent see more no-shows than demos booked by human reps.</p>
-        <div class="chips"><span class="chip">Claude</span><span class="chip">Call transcript analysis</span><span class="chip">Root-cause analysis</span></div>
+        <div class="chips"><span class="chip">Claude</span><span class="chip">Call transcript analysis</span><span class="chip">Root-cause analysis</span></div><div class="p-stats"><div class="p-stat"><b>439</b><span>calls screened</span></div><div class="p-stat"><b>2</b><span>groups compared: AI-led and human-led</span></div><div class="p-stat"><b>15</b><span>points checked on each call</span></div></div><div class="p-vis"><span class="tag">What each call was checked for</span><ol class="checks"><li>Opening</li><li>Company intro</li><li>Requirements</li><li>Demo value</li><li>Pain points</li><li>Objections</li><li>Trust</li><li>Reason to attend</li><li>How the slot was proposed</li><li>Customer agreement</li><li>Availability confirmed</li><li>Expectations set</li><li>Next steps</li><li>Contact details</li><li>Close</li></ol></div>
         <dl class="p-detail">
           <div><dt>Problem</dt><dd>Prospects booked by the AI agent were missing their demos more often than prospects booked by human reps.</dd></div>
           <div><dt>What I did</dt><dd>Used Claude to review AI-led and human-led call transcripts against a 15-point framework, covering the opening, requirements, objections, trust, how the appointment was proposed, customer agreement and next steps.</dd></div>
@@ -265,7 +265,7 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
         <div class="p-head"><span class="p-num">02</span><span class="tag">Built with Claude</span></div>
         <h3>AI voice agent script redesign</h3>
         <p>A new calling script and prompt for the AI voice agent, built on what the call analysis found.</p>
-        <div class="chips"><span class="chip">Claude</span><span class="chip">Structured prompting</span><span class="chip">AI voice agents</span></div>
+        <div class="chips"><span class="chip">Claude</span><span class="chip">Structured prompting</span><span class="chip">AI voice agents</span></div><div class="p-stats"><div class="p-stat"><b>4</b><span>script versions</span></div><div class="p-stat"><b>22</b><span>open decisions tracked</span></div><div class="p-stat"><b>1</b><span>success measure: demo attendance</span></div></div><div class="p-vis"><span class="tag">How the script evolved</span><div class="flow"><span>Version 1</span><i>→</i><span>Version 2</span><i>→</i><span>Version 3</span><i>→</i><span class="on">Version 4, final</span></div></div>
         <dl class="p-detail">
           <div><dt>Problem</dt><dd>The AI agent's script had gaps in engagement, objection handling, confirmation and customer commitment.</dd></div>
           <div><dt>What I did</dt><dd>Worked with Claude through four versions of the prompt and sample call scripts, and kept a decisions register of open policy and tool questions, each with a safe default.</dd></div>
@@ -276,7 +276,7 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
         <div class="p-head"><span class="p-num">03</span><span class="tag">Built with Claude</span></div>
         <h3>Slack Celebrations Bot</h3>
         <p>Automatic birthday, work-anniversary and welcome posts in Slack, each with a designed card.</p>
-        <div class="chips"><span class="chip">Claude Code</span><span class="chip">Google Apps Script</span><span class="chip">Slack API</span><span class="chip">Google Slides</span></div>
+        <div class="chips"><span class="chip">Claude Code</span><span class="chip">Google Apps Script</span><span class="chip">Slack API</span><span class="chip">Google Slides</span></div><div class="p-stats"><div class="p-stat"><b>3</b><span>post types: birthday, anniversary, welcome</span></div><div class="p-stat"><b>120+</b><span>employees covered</span></div><div class="p-stat"><b>2</b><span>posting times a day</span></div></div><div class="p-vis"><span class="tag">How it works</span><div class="flow"><span>Team sheet</span><i>→</i><span>Bot checks the date</span><i>→</i><span>Card is drawn</span><i>→</i><span class="on">Posted in Slack</span></div></div>
         <dl class="p-detail">
           <div><dt>Problem</dt><dd>HR wrote and posted every birthday, anniversary and welcome message by hand.</dd></div>
           <div><dt>What I did</dt><dd>Built a bot with Claude that reads team data from a Google Sheet, draws each card, posts at set times, logs every post and emails any failure.</dd></div>
