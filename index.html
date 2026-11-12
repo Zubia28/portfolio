@@ -358,10 +358,7 @@ footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;fle
     <button class="btn v" type="button" id="copy-email">Copy email</button>
     <a class="btn" href="https://www.linkedin.com/in/moqaddas-zubia" target="_blank" rel="noopener">LinkedIn ↗</a>
   </div>
-  <form class="glass cform" id="cform" onsubmit="event.preventDefault();var e=this.elements;location.href='mailto:moqaddaszubia28@gmail.com?subject='+encodeURIComponent(e.csubject.value)+'&amp;body='+encodeURIComponent(e.cmessage.value+'
-
-'+e.cname.value+'
-'+e.cemail.value)"><div class="frow"><label for="cname">Name<input id="cname" name="cname" type="text" autocomplete="name" required></label><label for="cemail">Email<input id="cemail" name="cemail" type="email" autocomplete="email" required></label></div><label for="csubject">Subject<input id="csubject" name="csubject" type="text" required></label><label for="cmessage">Your message<textarea id="cmessage" name="cmessage" rows="4" required></textarea></label><button class="btn v" type="submit">Write email</button><p class="fnote">This opens a draft in your email app. Nothing you type is stored or sent by this website.</p></form><div class="c-meta"><span>Ahmedabad, India</span></div>
+  <form class="glass cform" id="cform" onsubmit="event.preventDefault();var e=this.elements;location.href='mailto:moqaddaszubia28@gmail.com?subject='+encodeURIComponent(e.csubject.value)+'&amp;body='+encodeURIComponent([e.cmessage.value,'',e.cname.value,e.cemail.value].join(String.fromCharCode(10)))"><div class="frow"><label for="cname">Name<input id="cname" name="cname" type="text" autocomplete="name" required></label><label for="cemail">Email<input id="cemail" name="cemail" type="email" autocomplete="email" required></label></div><label for="csubject">Subject<input id="csubject" name="csubject" type="text" required></label><label for="cmessage">Your message<textarea id="cmessage" name="cmessage" rows="4" required></textarea></label><button class="btn v" type="submit">Write email</button><p class="fnote">This opens a draft in your email app. Nothing you type is stored or sent by this website.</p></form><div class="c-meta"><span>Ahmedabad, India</span></div>
   <footer><span>© 2026 Moqaddas Zubia</span><span>Business Operations · AI &amp; Process Optimization</span></footer>
 </section>
 </main>
