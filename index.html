@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moqaddas Zubia</title>
+<meta name="description" content="Moqaddas Zubia, Associate in AI and Business Operations at CallHippo. Process optimization, root-cause analysis, conversation intelligence and projects built with Claude.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
+<style>
+/* Layout: a fixed, animated lavender landscape (sky, rocks, hill, lake) sits behind the whole page. A cluster of
+   purple particles floats in it and re-forms into a new shape for each section. Headlines are tall uppercase serif
+   set directly on the scene; anything longer than a line or two sits on frosted white cards. One deliberate look. */
+:root{
+  --sky:#9a84ea;          /* page ground behind the canvas */
+  --ink:#24123f;          /* text on cards */
+  --ink-2:#55467a;        /* secondary text on cards */
+  --violet:#6d28d9;       /* accent: pills, buttons, labels */
+  --violet-soft:rgba(109,40,217,.08);
+  --lav:#f3eefe;          /* intro ground */
+  --glass:rgba(255,255,255,.86);
+  --f-serif:"Instrument Serif","Georgia",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --f-sans:"Inter Tight","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--sky);color:#fff;font-family:var(--f-sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+[hidden]{display:none!important}
+a{color:inherit}
+p{margin:0}
+:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:8px}
+.glass :focus-visible{outline-color:var(--violet)}
+#scene{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+header,main{position:relative;z-index:1}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+
+/* Intro */
+.intro{position:fixed;inset:0;z-index:200;background:var(--lav);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:24px;transition:opacity .8s,visibility .8s}
+.intro.gone{opacity:0;visibility:hidden;pointer-events:none}
+.intro .mark{font-family:var(--f-serif);font-size:34px;letter-spacing:.01em}
+.intro .mark i{font-style:normal;color:var(--violet)}
+.intro p{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;max-width:34ch}
+.intro button{margin-top:26px;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:#fff;color:var(--ink);border:1px solid rgba(109,40,217,.25);border-radius:999px;padding:14px 30px;cursor:pointer;box-shadow:0 14px 30px -18px rgba(109,40,217,.6)}
+.intro button:hover{background:var(--violet);color:#fff}
+
+/* Nav */
+header.top{position:fixed;top:0;left:0;right:0;z-index:60;padding-top:calc(env(safe-area-inset-top,0px) + 18px);padding-bottom:14px;transition:background .3s}
+header.top.scrolled{background:rgba(88,62,180,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.mark{font-family:var(--f-serif);font-size:25px;text-decoration:none;letter-spacing:.01em;line-height:1}
+.mark i{font-style:normal;color:#e9d5ff}
+.links{display:flex;gap:30px}
+.links a,.tools a,.tools button{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#fff}
+.links a:hover,.tools a:hover{text-decoration:underline;text-underline-offset:5px}
+.tools{display:flex;align-items:center;gap:22px}
+.tools button{background:none;border:0;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.tools button::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff}
+.tools button[aria-pressed="false"]::before{background:transparent;box-shadow:inset 0 0 0 1.5px #fff}
+
+/* Type on the scene */
+.display{font-family:var(--f-serif);font-weight:400;text-transform:uppercase;font-size:clamp(44px,8.4vw,132px);line-height:.92;letter-spacing:-.01em;margin:0;text-shadow:0 4px 44px rgba(45,18,110,.5)}
+.display em{display:block;text-transform:none;font-style:italic;font-size:.84em;line-height:1.05}
+.display .in{display:block;padding-left:clamp(0px,13vw,210px)}
+.pill{align-self:flex-start;font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:var(--violet);color:#fff;border-radius:999px;padding:5px 13px}
+.note{align-self:flex-start;font-family:var(--f-mono);font-size:12.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;line-height:1.55;max-width:46ch;background:rgba(42,18,98,.46);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:11px 15px;border-radius:12px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 24px;border-radius:999px;background:#fff;color:var(--ink);border:0;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.v{background:var(--violet);color:#fff}
+
+/* Hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;gap:26px;padding-block:120px 60px}
+.hero .note{margin-bottom:4px}
+
+/* Sections */
+.sec{padding-bottom:90px;scroll-margin-top:0}
+.sec-top{min-height:74svh;display:flex;flex-direction:column;justify-content:center;gap:22px;padding-top:110px;padding-bottom:40px}
+.sec-top .display{font-size:clamp(40px,7.2vw,112px);max-width:11ch}
+.sec-top.wide .display{max-width:14ch}
+
+/* Frosted cards */
+.glass{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--ink);border-radius:24px;padding:30px;border:1px solid rgba(255,255,255,.75);box-shadow:0 30px 60px -34px rgba(45,18,110,.6);min-width:0}
+.glass h3{font-family:var(--f-serif);font-weight:400;font-size:30px;line-height:1.1;margin:0;letter-spacing:-.005em}
+.glass p,.glass li,.glass dd{color:var(--ink-2)}
+.tag{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--f-mono);font-size:11.5px;line-height:1.5;color:#4c1d95;background:var(--violet-soft);border:1px solid rgba(109,40,217,.22);border-radius:999px;padding:3px 10px}
+
+/* About */
+.about{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:start}
+.about .pic{border-radius:18px;overflow:hidden;aspect-ratio:4/5}
+.about .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 28%}
+.about .copy{display:flex;flex-direction:column;gap:14px;font-size:17px;min-width:0}
+.about .copy strong{color:var(--ink);font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:14px;border-top:1px solid rgba(36,18,63,.14)}
+.fact{padding:18px 14px 0 0;min-width:0}
+.fact + .fact{padding-left:18px;border-left:1px solid rgba(36,18,63,.14)}
+.fact b{display:block;font-family:var(--f-serif);font-weight:400;font-size:44px;line-height:1;color:var(--violet);font-variant-numeric:tabular-nums}
+.fact span{display:block;margin-top:6px;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+
+/* Projects */
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.project{display:flex;flex-direction:column;gap:16px}
+.p-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.p-num{font-family:var(--f-serif);font-style:italic;font-size:30px;color:var(--violet);line-height:1}
+.p-detail{margin:0;display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(36,18,63,.14);padding-top:16px}
+.p-detail div{display:grid;grid-template-columns:92px 1fr;gap:14px}
+.p-detail dt{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);padding-top:4px}
+.p-detail dd{margin:0;font-size:14.5px;min-width:0}
+
+/* Approach */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.step{padding:24px;display:flex;flex-direction:column;gap:8px}
+.step h3{font-size:26px}
+.step p{font-size:14px;line-height:1.55}
+
+/* Experience */
+.roles{display:flex;flex-direction:column;gap:16px}
+.role{display:grid;grid-template-columns:290px 1fr;gap:18px 48px}
+.role > *{min-width:0}
+.role h3{margin-top:10px}
+.org{font-weight:600;color:var(--ink);margin-top:8px}
+.now{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-family:var(--f-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink)}
+.now::before{content:"";width:8px;height:8px;border-radius:50%;background:#22c55e}
+.role ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.role li{position:relative;padding-left:22px}
+.role li::before{content:"";position:absolute;left:0;top:.68em;width:6px;height:6px;border-radius:50%;background:var(--violet)}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.skill{display:flex;flex-direction:column;gap:14px;padding:26px}
+.skill h3{font-size:26px}
+
+/* Education */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.two h3{margin-bottom:14px}
+.e-row{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:baseline;padding-block:13px;border-top:1px solid rgba(36,18,63,.14)}
+.e-row b{display:block;font-weight:600;color:var(--ink)}
+.e-row span{font-size:14px;color:var(--ink-2)}
+.e-row em{font-style:normal;font-family:var(--f-serif);font-size:30px;color:var(--violet);font-variant-numeric:tabular-nums}
+.aw{list-style:none;margin:0;padding:0}
+.aw li{position:relative;padding:13px 0 13px 22px;border-top:1px solid rgba(36,18,63,.14)}
+.aw li::before{content:"";position:absolute;left:0;top:1.5em;width:6px;height:6px;border-radius:50%;background:var(--violet)}
+
+/* Contact */
+.contact{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:24px;padding-block:120px 30px}
+.contact .display{max-width:none}
+.contact .note,.contact .pill{align-self:center}
+.mail{font-family:var(--f-serif);font-size:clamp(24px,3.4vw,44px);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.8);padding-bottom:2px;overflow-wrap:anywhere;text-shadow:0 2px 24px rgba(45,18,110,.6)}
+.contact .btns{justify-content:center}
+.c-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 26px;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 1px 12px rgba(45,18,110,.7)}
+footer{margin-top:60px;width:100%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 1px 12px rgba(45,18,110,.7)}
+
+/* Responsive */
+@media (max-width:980px){
+  .links{display:none}
+  .about{grid-template-columns:1fr}
+  .about .pic{max-width:260px}
+  .facts{grid-template-columns:1fr 1fr}
+  .fact{padding:16px 12px 16px 0}
+  .fact + .fact{padding-left:0;border-left:0}
+  .fact:nth-child(even){padding-left:16px;border-left:1px solid rgba(36,18,63,.14)}
+  .fact:nth-child(n+3){border-top:1px solid rgba(36,18,63,.14)}
+  .projects,.two{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .role{grid-template-columns:1fr}
+  .skills{grid-template-columns:1fr 1fr}
+  .sec-top{min-height:66svh;justify-content:flex-end}
+}
+@media (max-width:600px){
+  .glass{padding:22px;border-radius:20px}
+  .steps,.skills{grid-template-columns:1fr}
+  .p-detail div{grid-template-columns:1fr;gap:2px}
+  .tools a{display:none}
+  .display .in{padding-left:0}
+}
+</style>
+</head>
+<body>
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<div class="intro" id="intro">
+  <div class="mark">moqaddas <i>zubia</i></div>
+  <p>Business operations, AI &amp; process optimization</p>
+  <button type="button" id="enter">Enter</button>
+</div>
+
+<header class="top" id="top-bar">
+  <div class="wrap bar">
+    <a class="mark" href="#home">moqaddas <i>zubia</i></a>
+    <nav class="links" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="tools">
+      <button type="button" id="motion" aria-pressed="true">Motion on</button>
+      <a href="https://www.linkedin.com/in/moqaddas-zubia" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="wrap hero" id="home" data-shape="sphere" data-x=".7" data-y=".38" data-s=".2" data-h=".66">
+  <p class="note">Associate, AI &amp; Business Operations at CallHippo</p>
+  <h1 class="display"><em>Business</em><span class="in">operations,<br>improved with AI</span></h1>
+  <div class="btns">
+    <a class="btn v" href="#projects">View my projects ↓</a>
+    <a class="btn" href="#contact">Contact me</a>
+  </div>
+</section>
+
+<section class="sec" id="about" data-shape="bars" data-x=".76" data-y=".4" data-s=".24" data-h=".8">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="pill">About</span>
+      <h2 class="display"><em>I turn</em>analysis into action</h2>
+      <p class="note">2+ years across quality analytics, fraud prevention and AI-assisted workflow improvement</p>
+    </div>
+    <div class="glass about">
+      <div class="pic"><img src="photo.png" alt="Portrait of Moqaddas Zubia" width="512" height="512"></div>
+      <div class="copy">
+        <p>I'm a business operations and process optimization professional. I analyse business processes, identify operational gaps and bottlenecks, run root-cause analysis, and translate what I find into <strong>recommendations teams can use</strong>.</p>
+        <p>I work hands-on with <strong>Claude, ChatGPT, Gemini and Grok</strong> for transcript analysis, structured research and documentation, and I validate AI output before it's used. I report in Advanced Excel and Google Sheets.</p>
+        <div class="facts">
+          <div class="fact"><b>2+</b><span>years of experience</span></div>
+          <div class="fact"><b>3</b><span>companies: CallHippo, ETS Labs, TTEC</span></div>
+          <div class="fact"><b>4</b><span>projects built with Claude</span></div>
+          <div class="fact"><b>86%</b><span>BBA in Finance, Jain University</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="projects" data-shape="bubble" data-x=".76" data-y=".4" data-s=".25" data-h=".86">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="pill">Projects</span>
+      <h2 class="display"><em>Built</em>with Claude</h2>
+      <p class="note">Four projects where I used Claude to analyse, design or automate real work</p>
+    </div>
+    <div class="projects">
+      <article class="glass project">
+        <div class="p-head"><span class="p-num">01</span><span class="tag">Built with Claude</span></div>
+        <h3>AI vs human demo-booking call analysis</h3>
+        <p>Finding out why demos booked by an AI voice agent see more no-shows than demos booked by human reps.</p>
+        <div class="chips"><span class="chip">Claude</span><span class="chip">Call transcript analysis</span><span class="chip">Root-cause analysis</span></div>
+        <dl class="p-detail">
+          <div><dt>Problem</dt><dd>Prospects booked by the AI agent were missing their demos more often than prospects booked by human reps.</dd></div>
+          <div><dt>What I did</dt><dd>Used Claude to review AI-led and human-led call transcripts against a 15-point framework, covering the opening, requirements, objections, trust, how the appointment was proposed, customer agreement and next steps.</dd></div>
+          <div><dt>Result</dt><dd>An evidence-based list of gaps and of practices worth copying from both AI and human calls, used as the basis for the script redesign.</dd></div>
+        </dl>
+      </article>
+      <article class="glass project">
+        <div class="p-head"><span class="p-num">02</span><span class="tag">Built with Claude</span></div>
+        <h3>AI voice agent script redesign</h3>
+        <p>A new calling script and prompt for the AI voice agent, built on what the call analysis found.</p>
+        <div class="chips"><span class="chip">Claude</span><span class="chip">Structured prompting</span><span class="chip">AI voice agents</span></div>
+        <dl class="p-detail">
+          <div><dt>Problem</dt><dd>The AI agent's script had gaps in engagement, objection handling, confirmation and customer commitment.</dd></div>
+          <div><dt>What I did</dt><dd>Worked with Claude through four versions of the prompt and sample call scripts, and kept a decisions register of open policy and tool questions, each with a safe default.</dd></div>
+          <div><dt>Result</dt><dd>A final prompt ready for testing against the current one, to be judged on demo attendance and not only on bookings.</dd></div>
+        </dl>
+      </article>
+      <article class="glass project">
+        <div class="p-head"><span class="p-num">03</span><span class="tag">Built with Claude</span></div>
+        <h3>Slack Celebrations Bot</h3>
+        <p>Automatic birthday, work-anniversary and welcome posts in Slack, each with a designed card.</p>
+        <div class="chips"><span class="chip">Claude Code</span><span class="chip">Google Apps Script</span><span class="chip">Slack API</span><span class="chip">Google Slides</span></div>
+        <dl class="p-detail">
+          <div><dt>Problem</dt><dd>HR wrote and posted every birthday, anniversary and welcome message by hand.</dd></div>
+          <div><dt>What I did</dt><dd>Built a bot with Claude that reads team data from a Google Sheet, draws each card, posts at set times, logs every post and emails any failure.</dd></div>
+          <div><dt>Result</dt><dd>The bot covers 120+ employees and is running in a test channel before it goes live.</dd></div>
+        </dl>
+      </article>
+      <article class="glass project">
+        <div class="p-head"><span class="p-num">04</span><span class="tag">Built with Claude</span></div>
+        <h3>This portfolio website</h3>
+        <p>The site you're reading, designed, written and built with Claude.</p>
+        <div class="chips"><span class="chip">Claude Code</span><span class="chip">HTML &amp; CSS</span><span class="chip">JavaScript</span></div>
+        <dl class="p-detail">
+          <div><dt>Problem</dt><dd>I needed one place to show my experience and projects beyond a resume.</dd></div>
+          <div><dt>What I did</dt><dd>Briefed Claude with my resume and references, reviewed sample designs, and refined the wording until it matched my role.</dd></div>
+          <div><dt>Result</dt><dd>A responsive personal website with an animated scene that works on desktop and phone.</dd></div>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="approach" data-shape="gear" data-x=".76" data-y=".4" data-s=".24" data-h=".78">
+  <div class="wrap">
+    <div class="sec-top wide">
+      <span class="pill">Approach</span>
+      <h2 class="display"><em>From</em>operational gap to practical fix</h2>
+      <p class="note">The same five steps for a calling workflow, a set of transcripts or a quality scorecard</p>
+    </div>
+    <div class="steps">
+      <div class="glass step"><span class="tag">01</span><h3>Analyse</h3><p>Review the process, call transcripts and performance data.</p></div>
+      <div class="glass step"><span class="tag">02</span><h3>Identify</h3><p>Find the gaps, bottlenecks and recurring patterns.</p></div>
+      <div class="glass step"><span class="tag">03</span><h3>Diagnose</h3><p>Run root-cause analysis to see why they happen.</p></div>
+      <div class="glass step"><span class="tag">04</span><h3>Recommend</h3><p>Turn findings into structured insights and specific changes.</p></div>
+      <div class="glass step"><span class="tag">05</span><h3>Standardise</h3><p>Document the improved process in SOPs so it stays consistent.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="experience" data-shape="arrow" data-x=".76" data-y=".4" data-s=".23" data-h=".84">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="pill">Experience</span>
+      <h2 class="display"><em>Where</em>I've worked</h2>
+      <p class="note">CallHippo, ETS Labs and TTEC</p>
+    </div>
+    <div class="roles">
+      <article class="glass role">
+        <div>
+          <span class="tag">Sep 2026 – Present</span>
+          <h3>Associate, AI &amp; Business Operations</h3>
+          <div class="org">CallHippo</div>
+          <span class="now">Current role</span>
+        </div>
+        <ul>
+          <li>Analyse AI-led and human-led demo-booking conversations to identify differences in customer engagement, booking confirmation and demo attendance.</li>
+          <li>Run root-cause analysis of demo no-shows by reviewing call transcripts, agent communication patterns, confirmation practices and customer intent.</li>
+          <li>Use Claude and other AI tools to analyse call transcripts, identify recurring patterns and turn findings into structured business insights.</li>
+          <li>Compare AI-agent scripts with effective human-agent conversations to find gaps in engagement, objection handling, confirmation and customer commitment.</li>
+          <li>Develop recommendations for AI-agent script refinements to improve conversation quality, booking effectiveness and demo attendance.</li>
+          <li>Identify gaps in calling workflows and explore ways to improve agent productivity through conversation intelligence, process changes and automation.</li>
+        </ul>
+      </article>
+      <article class="glass role">
+        <div>
+          <span class="tag">Jun 2025 – Aug 2026</span>
+          <h3>Quality Analyst II, Speech &amp; Text Analytics</h3>
+          <div class="org">ETS Labs</div>
+        </div>
+        <ul>
+          <li>Analysed customer service, technical support and sales interactions to identify quality gaps, process deviations and performance trends.</li>
+          <li>Ran root-cause analysis on recurring errors and performance gaps, translating findings into structured feedback and actionable recommendations.</li>
+          <li>Built Speech Analytics searches and automated reports to surface customer trends, interaction patterns and compliance risks.</li>
+          <li>Tracked performance through QA reports, scorecards and reporting in Advanced Excel and Google Sheets.</li>
+          <li>Maintained SOPs and process documentation, and took part in internal and client calibration sessions to align quality scoring.</li>
+        </ul>
+      </article>
+      <article class="glass role">
+        <div>
+          <span class="tag">Apr 2022 – Jan 2023</span>
+          <h3>Fraud Prevention Representative &amp; Subject Matter Expert</h3>
+          <div class="org">TTEC</div>
+        </div>
+        <ul>
+          <li>Monitored customer transactions and account activity to identify suspicious patterns, potential fraud and financial risk.</li>
+          <li>Investigated fraud alerts, documented findings and followed established procedures.</li>
+          <li>Acted as Subject Matter Expert on fraud workflows, giving process guidance and real-time support on complex and escalated cases.</li>
+          <li>Reinforced process updates and SOP requirements through peer coaching, knowledge sharing and feedback.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="skills" data-shape="check" data-x=".76" data-y=".4" data-s=".24" data-h=".8">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="pill">Skills</span>
+      <h2 class="display"><em>Core</em>skills</h2>
+      <p class="note">Process optimization, AI tools, data and metrics, quality and compliance</p>
+    </div>
+    <div class="skills">
+      <div class="glass skill"><h3>Business process optimization</h3><div class="chips"><span class="chip">Workflow analysis</span><span class="chip">Process gap identification</span><span class="chip">Bottleneck analysis</span><span class="chip">Root-cause analysis</span><span class="chip">SOP documentation</span><span class="chip">Continuous improvement</span></div></div>
+      <div class="glass skill"><h3>AI &amp; automation tools</h3><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Grok / Grokbot</span><span class="chip">Structured prompting</span><span class="chip">AI-assisted analysis</span><span class="chip">Output validation</span></div></div>
+      <div class="glass skill"><h3>Cross-channel strategy</h3><div class="chips"><span class="chip">Speech analytics</span><span class="chip">Text analytics</span><span class="chip">AI voice agents</span><span class="chip">Conversation intelligence</span><span class="chip">Call transcript analysis</span></div></div>
+      <div class="glass skill"><h3>Data &amp; performance metrics</h3><div class="chips"><span class="chip">Advanced Excel</span><span class="chip">Google Sheets</span><span class="chip">KPI reporting</span><span class="chip">QA scorecards</span><span class="chip">Trend analysis</span><span class="chip">Data validation</span></div></div>
+      <div class="glass skill"><h3>Business operations</h3><div class="chips"><span class="chip">Process mapping</span><span class="chip">Operational efficiency</span><span class="chip">Stakeholder coordination</span><span class="chip">Workflow documentation</span><span class="chip">Cross-functional collaboration</span></div></div>
+      <div class="glass skill"><h3>Quality, risk &amp; compliance</h3><div class="chips"><span class="chip">Quality assurance</span><span class="chip">Fraud prevention</span><span class="chip">Transaction monitoring</span><span class="chip">Compliance reviews</span><span class="chip">Exception handling</span></div></div>
+    </div>
+    <div class="two" style="margin-top:16px" id="education">
+      <div class="glass">
+        <h3>Education</h3>
+        <div class="e-row"><div><b>Bachelor of Business Administration (Finance)</b><span>Jain University · 2025</span></div><em>86%</em></div>
+        <div class="e-row"><div><b>Class XII</b><span>JUSCO School, Kadma</span></div><em>95%</em></div>
+        <div class="e-row"><div><b>Class X</b><span>JUSCO School, Kadma</span></div><em>86%</em></div>
+      </div>
+      <div class="glass">
+        <h3>Achievements</h3>
+        <ul class="aw">
+          <li>Star Performer Award for consistently meeting or exceeding KPI targets</li>
+          <li>Recognition for analytical precision and data quality</li>
+          <li>Winner of multiple debate competitions</li>
+          <li>Gold Medalist in Basketball, Table Tennis and Painting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap contact" id="contact" data-shape="ring" data-x=".84" data-y=".34" data-s=".17" data-h=".62">
+  <span class="pill">Contact</span>
+  <h2 class="display"><em>Let's</em>connect</h2>
+  <p class="note">Reach out to talk about business operations, process optimization or AI-assisted workflows</p>
+  <a class="mail" id="email" href="mailto:moqaddaszubia28@gmail.com">moqaddaszubia28@gmail.com</a>
+  <div class="btns">
+    <button class="btn v" type="button" id="copy-email">Copy email</button>
+    <a class="btn" href="https://www.linkedin.com/in/moqaddas-zubia" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+  <div class="c-meta"><span>Ahmedabad, India</span></div>
+  <footer><span>© 2026 Moqaddas Zubia</span><span>Business Operations · AI &amp; Process Optimization</span></footer>
+</section>
+</main>
+
+<script>
+(function(){
+  var cv=document.getElementById('scene'), ctx=cv.getContext('2d');
+  var W=0,H=0,DPR=1,t=0,mx=0,my=0;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motion=!reduce;
+
+  function seeded(s){return function(){s|=0;s=s+0x6D2B79F5|0;var r=Math.imul(s^s>>>15,1|s);r=r+Math.imul(r^r>>>7,61|r)^r;return((r^r>>>14)>>>0)/4294967296}}
+  var R=seeded(11);
+
+  function resize(){DPR=Math.min(window.devicePixelRatio||1,1.5);W=innerWidth;H=innerHeight;cv.width=Math.max(1,W*DPR);cv.height=Math.max(1,H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0)}
+
+  /* ---------- Landscape ---------- */
+  function makeRocks(n,minH,maxH,minW,maxW){var a=[];for(var i=0;i<n;i++)a.push({x:R()*1.3,w:minW+R()*(maxW-minW),h:minH+R()*(maxH-minH),l:.12+R()*.22,r:.12+R()*.22,p:R(),k:R()});return a}
+  var far=makeRocks(24,.025,.07,.03,.07), near=makeRocks(15,.05,.15,.035,.08);
+  function drawRocks(list,baseY,color,depth,shift){
+    ctx.fillStyle=color; var U=Math.min(W,H*1.7);
+    for(var i=0;i<list.length;i++){
+      var k=list[i], x=((k.x+shift*depth)%1.3+1.3)%1.3-.15, px=x*W-mx*16*depth, w=k.w*U, h=k.h*H;
+      ctx.beginPath();
+      ctx.moveTo(px-w/2,baseY+2);
+      ctx.lineTo(px-w/2+w*k.l*.5,baseY-h*(.55+k.k*.2));
+      ctx.lineTo(px-w/2+w*(k.l+.12),baseY-h);
+      ctx.lineTo(px+w/2-w*k.r,baseY-h*(.7+k.p*.28));
+      ctx.lineTo(px+w/2,baseY+2);
+      ctx.closePath(); ctx.fill();
+    }
+  }
+  var clouds=[]; for(var i=0;i<8;i++) clouds.push({x:R(),y:R()*.55,r:.14+R()*.2,a:.16+R()*.2,v:.004+R()*.006});
+  var flakes=[]; for(i=0;i<46;i++) flakes.push({x:R(),y:R(),s:2+R()*5,rot:R()*6.28,vx:-.0004-R()*.0008,vy:-.0002-R()*.0005,vr:(R()-.5)*.04});
+  var glows=[]; for(i=0;i<12;i++) glows.push({x:R(),y:R()*.8,r:1.5+R()*2.5,p:R()*6.28});
+
+  function hillPath(hz,th){ctx.beginPath();ctx.moveTo(0,hz+th*.4);ctx.bezierCurveTo(W*.28,hz-th*.3,W*.62,hz+th*.15,W,hz+th*.3);ctx.lineTo(W,hz+th+1);ctx.lineTo(0,hz+th+1);ctx.closePath()}
+
+  function drawLand(){
+    var hz=cur.h*H, th=H*.075, shift=scrollY/(H*9), g;
+    g=ctx.createLinearGradient(0,0,0,Math.max(hz,H*.55)); g.addColorStop(0,'#735dd3'); g.addColorStop(.6,'#9f89ec'); g.addColorStop(1,'#d3b1f1');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    for(var i=0;i<clouds.length;i++){
+      var c=clouds[i], cx=((c.x+t*c.v)%1.4)*W-W*.2, cy=c.y*H, r=c.r*W;
+      ctx.save(); ctx.translate(cx,cy); ctx.scale(1,.42);
+      g=ctx.createRadialGradient(0,0,0,0,0,r); g.addColorStop(0,'rgba(255,176,236,'+c.a+')'); g.addColorStop(1,'rgba(255,176,236,0)');
+      ctx.fillStyle=g; ctx.fillRect(-r,-r,r*2,r*2); ctx.restore();
+    }
+    if(hz>H+H*.2) return;
+    drawRocks(far,hz+2,'#8572c6',.45,shift);
+    drawRocks(near,hz+th*.3,'#40305c',1,shift);
+    g=ctx.createLinearGradient(0,hz-th*.3,0,hz+th); g.addColorStop(0,'#7240d6'); g.addColorStop(1,'#4a2396');
+    hillPath(hz,th); ctx.fillStyle=g; ctx.fill();
+    var ly=hz+th;
+    if(ly<H){
+      g=ctx.createLinearGradient(0,ly,0,Math.max(H,ly+1)); g.addColorStop(0,'#806ad9'); g.addColorStop(1,'#48329a');
+      ctx.fillStyle=g; ctx.fillRect(0,ly,W,H-ly);
+      ctx.save(); ctx.beginPath(); ctx.rect(0,ly,W,H-ly); ctx.clip();
+      ctx.translate(0,2*ly); ctx.scale(1,-1); ctx.globalAlpha=.3;
+      drawRocks(near,hz+th*.3,'#33254d',1,shift); hillPath(hz,th); ctx.fillStyle='#4a2396'; ctx.fill();
+      ctx.restore();
+      ctx.fillStyle='#ffffff';
+      for(i=0;i<8;i++){ var ry=ly+(i+.6)/8*(H-ly), rw=W*(.12+.1*((i*37)%5)/5), rx=((i*.173+t*.01*(1+i%3))%1.2)*W-rw; ctx.globalAlpha=.1; ctx.fillRect(rx,ry,rw,1.5); }
+      ctx.globalAlpha=1;
+    }
+    for(i=0;i<flakes.length;i++){
+      var f=flakes[i]; ctx.save(); ctx.translate(f.x*W,f.y*H); ctx.rotate(f.rot); ctx.globalAlpha=.5; ctx.fillStyle='#3b2a57';
+      ctx.fillRect(-f.s/2,-f.s/3,f.s,f.s*.6); ctx.restore();
+    }
+    for(i=0;i<glows.length;i++){
+      var q=glows[i], a=.45+.45*Math.sin(t*1.2+q.p), gx=q.x*W, gy=q.y*H, gr=q.r*5;
+      g=ctx.createRadialGradient(gx,gy,0,gx,gy,gr); g.addColorStop(0,'rgba(255,255,255,'+a+')'); g.addColorStop(1,'rgba(255,255,255,0)');
+      ctx.fillStyle=g; ctx.fillRect(gx-gr,gy-gr,gr*2,gr*2);
+    }
+  }
+
+  /* ---------- Particle cluster ---------- */
+  var N = innerWidth<820 ? 900 : 1500, P=seeded(5);
+  function inDisc(){var a=P()*6.283,r=Math.sqrt(P());return [Math.cos(a)*r,Math.sin(a)*r]}
+  function line(ax,ay,bx,by,th){var u=P(),d=inDisc(),dx=bx-ax,dy=by-ay,l=Math.sqrt(dx*dx+dy*dy)||1;return [ax+dx*u-dy/l*d[0]*th, ay+dy*u+dx/l*d[0]*th, d[1]*th]}
+  var gens={
+    sphere:function(){var u=P()*2-1,a=P()*6.283,s=Math.sqrt(1-u*u),r=.72+.28*P();return [s*Math.cos(a)*r,u*r,s*Math.sin(a)*r]},
+    ring:function(){var u=P()*6.283,v=P()*6.283,rr=.27*Math.sqrt(P());return [(.74+rr*Math.cos(v))*Math.cos(u),(.74+rr*Math.cos(v))*Math.sin(u),rr*Math.sin(v)]},
+    bars:function(){var hs=[.55,.9,1.3,1.8],sum=4.55,pick=P()*sum,b=0;while(pick>hs[b]){pick-=hs[b];b++}
+      return [-.78+b*.52+(P()-.5)*.36,-.9+P()*hs[b],(P()-.5)*.36]},
+    bubble:function(){for(;;){
+      if(P()<.12){var a=P(),b=P();if(a+b>1){a=1-a;b=1-b} return [-.55+a*.4+b*(-.15),-.42+b*(-.52),(P()-.5)*.4]}
+      var x=P()*2-1,y=-.42+P()*1.2, cx=Math.max(Math.abs(x)-.7,0), cy=Math.max(Math.abs(y-.18)-.3,0);
+      if(cx*cx+cy*cy>.09) continue;
+      var hole=false; for(var d=-1;d<=1;d++){var ex=x-d*.42,ey=y-.18; if(ex*ex+ey*ey<.0169) hole=true}
+      if(hole) continue; return [x,y,(P()-.5)*.4]}},
+    check:function(){return P()<.33 ? line(-.9,0,-.3,-.62,.2) : line(-.3,-.62,.92,.72,.2)},
+    arrow:function(){var u=P();return u<.56 ? line(-.85,-.8,.72,.72,.17) : u<.78 ? line(.86,.86,.86,.12,.17) : line(.86,.86,.12,.86,.17)},
+    gear:function(){for(;;){var a=P()*6.283,tooth=((a*8/6.283)%1)<.5,ro=tooth?1:.78,ri=.34,r=Math.sqrt(P()*(ro*ro-ri*ri)+ri*ri);return [Math.cos(a)*r,Math.sin(a)*r,(P()-.5)*.38]}}
+  };
+  var shapes={}; Object.keys(gens).forEach(function(k){var a=new Float32Array(N*3);for(var i=0;i<N;i++){var p=gens[k]();a[i*3]=p[0];a[i*3+1]=p[1];a[i*3+2]=p[2]}shapes[k]=a});
+
+  var palette=['#5b21b6','#7c3aed','#9333ea','#a855f7','#c084fc','#e9a8ff','#f5d0fe','#ffffff'];
+  var sprites=palette.map(function(col,i){var s=document.createElement('canvas');s.width=s.height=48;var x=s.getContext('2d'),g=x.createRadialGradient(18,16,2,24,24,24);
+    g.addColorStop(0,i>5?'#ffffff':'rgba(255,255,255,.85)');g.addColorStop(.35,col);g.addColorStop(1,col);x.fillStyle=g;x.beginPath();x.arc(24,24,23,0,6.283);x.fill();return s});
+  var px=new Float32Array(N*3), speed=new Float32Array(N), size=new Float32Array(N), colr=new Uint8Array(N), phase=new Float32Array(N), order=[];
+  for(i=0;i<N;i++){speed[i]=.035+P()*.06;size[i]=.6+P()*.9;colr[i]=Math.floor(Math.pow(P(),1.3)*palette.length);phase[i]=P()*6.283;order.push(i)}
+  var shapeName='sphere', target=shapes.sphere; px.set(target);
+  var zbuf=new Float32Array(N), sxb=new Float32Array(N), syb=new Float32Array(N), rb=new Float32Array(N);
+
+  function drawCluster(snap){
+    var cx=cur.x*W, cy=cur.y*H, S=cur.s*Math.min(W,H*1.25), g;
+    g=ctx.createRadialGradient(cx,cy,0,cx,cy,S*1.7); g.addColorStop(0,'rgba(255,196,255,.42)'); g.addColorStop(1,'rgba(255,196,255,0)');
+    ctx.fillStyle=g; ctx.fillRect(cx-S*1.7,cy-S*1.7,S*3.4,S*3.4);
+    var ry=Math.sin(t*.45)*.6+mx*.5, rx=Math.sin(t*.3)*.14+my*.3, cyR=Math.cos(ry), syR=Math.sin(ry), cxR=Math.cos(rx), sxR=Math.sin(rx);
+    for(var i=0;i<N;i++){
+      var j=i*3, k=snap?1:speed[i];
+      px[j]+=(target[j]-px[j])*k; px[j+1]+=(target[j+1]-px[j+1])*k; px[j+2]+=(target[j+2]-px[j+2])*k;
+      var x=px[j]+Math.sin(t*1.1+phase[i])*.014, y=px[j+1]+Math.cos(t*.9+phase[i])*.014, z=px[j+2];
+      var x1=x*cyR+z*syR, z1=-x*syR+z*cyR, y1=y*cxR-z1*sxR, z2=y*sxR+z1*cxR, pr=3.2/(3.2+z2);
+      zbuf[i]=z2; sxb[i]=cx+x1*S*pr; syb[i]=cy-y1*S*pr; rb[i]=size[i]*S*.034*pr;
+    }
+    order.sort(function(a,b){return zbuf[b]-zbuf[a]});
+    for(i=0;i<N;i++){var o=order[i], r=rb[o]; ctx.drawImage(sprites[colr[o]],sxb[o]-r,syb[o]-r,r*2,r*2)}
+  }
+
+  /* ---------- Section-driven camera ---------- */
+  var secs=[].slice.call(document.querySelectorAll('[data-shape]'));
+  var cur={x:.7,y:.38,s:.2,h:.66}, tg={x:.7,y:.38,s:.2,h:.66};
+  function pickSection(){
+    var mid=H*.5, best=secs[0];
+    for(var i=0;i<secs.length;i++){var r=secs[i].getBoundingClientRect(); if(r.top<=mid && r.bottom>mid){best=secs[i];break} if(r.top<=mid) best=secs[i]}
+    var d=best.dataset, narrow=W<820;
+    tg.x=narrow?.5:+d.x; tg.y=narrow?.27:+d.y; tg.s=(+d.s)*(narrow?.8:1); tg.h=+d.h;
+    if(d.shape!==shapeName){shapeName=d.shape; target=shapes[shapeName]}
+  }
+  function frame(snap){
+    pickSection();
+    var k=snap?1:.045; cur.x+=(tg.x-cur.x)*k; cur.y+=(tg.y-cur.y)*k; cur.s+=(tg.s-cur.s)*k; cur.h+=(tg.h-cur.h)*k;
+    ctx.clearRect(0,0,W,H); drawLand(); drawCluster(snap);
+  }
+  var raf=0;
+  function loop(){
+    t+=.016;
+    for(var i=0;i<flakes.length;i++){var f=flakes[i]; f.x+=f.vx; f.y+=f.vy; f.rot+=f.vr; if(f.x<-.05)f.x=1.05; if(f.y<-.05)f.y=1.05}
+    frame(false); raf=requestAnimationFrame(loop);
+  }
+  function start(){cancelAnimationFrame(raf); if(motion) loop(); else frame(true)}
+  resize(); start();
+  addEventListener('resize',function(){resize(); if(!motion) frame(true)});
+  addEventListener('pointermove',function(e){mx=e.clientX/innerWidth-.5; my=e.clientY/innerHeight-.5});
+
+  /* ---------- Page controls ---------- */
+  var head=document.getElementById('top-bar');
+  addEventListener('scroll',function(){head.classList.toggle('scrolled',scrollY>40); if(!motion) frame(true)},{passive:true});
+
+  var mBtn=document.getElementById('motion');
+  function setMotion(on){motion=on; mBtn.setAttribute('aria-pressed',String(on)); mBtn.textContent=on?'Motion on':'Motion off'; start()}
+  if(!motion) setMotion(false);
+  mBtn.addEventListener('click',function(){setMotion(!motion)});
+
+  var intro=document.getElementById('intro');
+  function enter(){intro.classList.add('gone'); setTimeout(function(){intro.hidden=true},900)}
+  document.getElementById('enter').addEventListener('click',enter);
+  setTimeout(enter,2600);
+
+  var btn=document.getElementById('copy-email');
+  btn.addEventListener('click',function(){
+    var text='moqaddaszubia28@gmail.com';
+    function done(m){btn.textContent=m;setTimeout(function(){btn.textContent='Copy email'},1600)}
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);done('Selected, press Ctrl+C')}
+    try{navigator.clipboard.writeText(text).then(function(){done('Copied')},sel)}catch(e){sel()}
+  });
+})();
+</script>
+</body>
+</html>
